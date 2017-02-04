@@ -102,6 +102,8 @@ def swissPairings():
         name1: the first player's name
         id2: the second player's unique id
         name2: the second player's name
+        
+    As well, it makes sure that we have at least 2 players and that the total players are even. 
     """
     db = connect()
     c = db.cursor()
