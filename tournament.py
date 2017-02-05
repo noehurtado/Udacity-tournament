@@ -80,11 +80,13 @@ def reportMatch(winner, loser):
       winner:  the id number of the player who won
       loser:  the id number of the player who lost
     """
-    winner = int(bleach.clean(winner))
-    loser = int(bleach.clean(loser))
+    winner = int(winner)
+    loser = int(loser)
     db = connect()
     c = db.cursor()
-    c.execute('INSERT INTO matches (winner, loser) VALUES (%s, %s)' % (winner, loser))
+    SQL = 'INSERT INTO matches (winner, loser) VALUES (%s, %s)'
+    data = (winner, loser)
+    c.execute(SQL, data)
     db.commit()
     db.close()
  
@@ -124,3 +126,4 @@ def swissPairings():
             print "We need at least 2 players."
     else:
         print "We need one more player."
+
