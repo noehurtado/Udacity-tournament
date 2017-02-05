@@ -7,10 +7,6 @@ DROP DATABASE IF EXISTS tournament;
 CREATE DATABASE tournament;
 \c tournament
 
--- Drop all previous tables
-DROP TABLE IF EXISTS players;
-DROP TABLE IF EXISTS matches;
-
 -- *** Table for players ***
 ----------------------------------
 -- player_id |    player_name
@@ -39,7 +35,7 @@ CREATE TABLE players (
 CREATE TABLE matches (
   match_id SERIAL PRIMARY KEY,
   winner INTEGER REFERENCES Players(player_id),
-  loser INTEGER REFERENCES Players(player_id),
+  loser INTEGER REFERENCES Players(player_id)
   );
 
 -- You can write comments in this file by starting them with two dashes, like
@@ -60,7 +56,7 @@ CREATE VIEW standings AS
     count(matches.winner) AS wins,
     (SELECT COUNT(*) FROM matches
       WHERE players.player_id = matches.winner
-      OR players.player_id = matches.loser) AS total_matches)
+      OR players.player_id = matches.loser) AS total_matches
   FROM players
   LEFT JOIN matches
   ON players.player_id = matches.winner
