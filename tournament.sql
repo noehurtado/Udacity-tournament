@@ -3,6 +3,9 @@
 -- Put your SQL 'create table' statements in this file; also 'create view'
 -- statements if you choose to use it.
 --
+DROP DATABASE IF EXISTS tournament;
+CREATE DATABASE tournament;
+\c tournament
 
 -- Drop all previous tables
 DROP TABLE IF EXISTS players;
@@ -35,8 +38,8 @@ CREATE TABLE players (
 ----------------------------------
 CREATE TABLE matches (
   match_id SERIAL PRIMARY KEY,
-  winner SERIAL REFERENCES Players(player_id),
-  loser SERIAL REFERENCES Players(player_id),
+  winner INTEGER REFERENCES Players(player_id),
+  loser INTEGER REFERENCES Players(player_id),
   );
 
 -- You can write comments in this file by starting them with two dashes, like
