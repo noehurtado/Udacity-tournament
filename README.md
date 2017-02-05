@@ -29,9 +29,11 @@ $  psql tournament
 $  \q
 ```
 
-### Import tournament & tournament functions:
-1. Inside python script, import tournament.py
-2. Once tournament.py was imported, you will be able to use the following functions:
+### Import tournament:
+Inside python script, `import tournament.py`. 
+
+###  Tournament Functions:
+`tournament.py` includes the following functions:
 
 ##### registerPlayer(name)<br />
 Adds a player to the tournament by putting an entry in the database. The database should assign an ID number to the player. Different players may have the same names but will receive different ID numbers.
